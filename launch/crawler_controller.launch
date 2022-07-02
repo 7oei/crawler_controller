@@ -1,0 +1,5 @@
+<launch>
+  <node name="joy_node" pkg="joy" type="joy_node" />
+  <node name="basic_twist_publisher" pkg="basic_twist_publisher" type="basic_twist_publisher" />
+  <node name="crawler_controller" pkg="crawler_controller" type="crawler_controller" />
+</launch>
