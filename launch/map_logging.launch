@@ -1,16 +1,7 @@
 <launch>
-  <!-- robot -->
-  <node name="joy_node" pkg="joy" type="joy_node" respawn="true" />
-  <node name="basic_twist_publisher" pkg="basic_twist_publisher" type="basic_twist_publisher" respawn="true" />
-  <node name="crawler_controller" pkg="crawler_controller" type="crawler_controller" respawn="true" output="screen"/>
-  <node pkg="odrive_ros" name="controller" type="controller.py"/>
-
-
   <include file="$(find velodyne_pointcloud)/launch/32e_points.launch">
     <arg name="calibration" value="/opt/ros/noetic/share/velodyne_pointcloud/params/32db.yaml"/>
   </include>
-
-  <include file="$(find realsense2_camera)/launch/rs_t265.launch" />
 
   <include file="$(find microstrain_inertial_driver)/launch/microstrain.launch" />
 
@@ -19,16 +10,7 @@
       <arg name="param_file_name" value="zed_f9p_rover" />
   </include>
   <node pkg="satfix_to_pose_py" type="gps_sub.py" name="gps_sub_node" respawn="true" />
-
+  
   <node pkg="rviz" type="rviz" name="rviz" args="-d $(find crawler_controller)/config/logging.rviz"/>
-
-
-
-
-
-
-
-
-  <!-- <include file="$(find azure_kinect_ros_driver)/launch/cloud_driver.launch" /> -->
 
 </launch>
