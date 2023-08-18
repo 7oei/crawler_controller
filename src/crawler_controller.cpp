@@ -27,9 +27,15 @@ CommandCallback (const geometry_msgs::TwistConstPtr& cmd_vel)
     else dir_r.data = false;
 
     float eta = ( 0.5 + 1.5 * b)/r;
-
     pwm_l.data = (abs(v_l)/eta) * 255;
     pwm_r.data = (abs(v_r)/eta) * 255;
+    pwm_l.data = (abs(v_l)/eta) * 255;
+    pwm_r.data = (abs(v_r)/eta) * 255;
+
+    // pwm_l.data = (abs(v_l)) * 255;
+    // pwm_r.data = (abs(v_r)) * 255;
+    // if(pwm_l.data>255) pwm_l.data = 250;
+    // if(pwm_r.data>255) pwm_r.data = 250;
 
     pub_pwm1.publish (pwm_l);
     pub_pwm2.publish (pwm_r);
